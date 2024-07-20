@@ -11,21 +11,64 @@ import React, { useState } from "react";
 
 const AuthForm = () => {
   const [isLogin, setIsLogin] = useState(true);
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+  });
+  const handleAuth = () => {
+    console.log(inputs);
+  };
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
           <Image src="./logo.png" h={24} cursor={"pointer"} alt="Instagram" />
-          <Input placeholder="Email" fontSize={14} type="email" />
-          <Input placeholder="Password" fontSize={14} type="password" />
+          <Input
+            placeholder="Email"
+            fontSize={14}
+            type="email"
+            value={inputs.email}
+            onChange={(e) =>
+              setInputs((prevState) => ({
+                ...prevState,
+                email: e.target.value,
+              }))
+            }
+          />
+          <Input
+            placeholder="Password"
+            fontSize={14}
+            type="password"
+            value={inputs.password}
+            onChange={(e) =>
+              setInputs((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }))
+            }
+          />
           {!isLogin ? (
             <Input
               placeholder="Confirm Password"
               fontSize={14}
               type="password"
+              value={inputs.confirmPassword}
+              onChange={(e) =>
+                setInputs((prevState) => ({
+                  ...prevState,
+                  confirmPassword: e.target.value,
+                }))
+              }
             />
           ) : null}
-          <Button w={"full"} colorScheme="blue" fontSize={14} size={"sm"}>
+          <Button
+            w={"full"}
+            colorScheme="blue"
+            fontSize={14}
+            size={"sm"}
+            onClick={handleAuth}
+          >
             {" "}
             {!isLogin ? "Login" : "Sign Up"}
           </Button>
