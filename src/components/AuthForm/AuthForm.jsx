@@ -1,14 +1,48 @@
-import { Box, Image, Input, VStack } from "@chakra-ui/react";
-import React from "react";
+import {
+  Box,
+  Button,
+  Image,
+  Input,
+  Text,
+  VStack,
+  Flex,
+} from "@chakra-ui/react";
+import React, { useState } from "react";
 
 const AuthForm = () => {
+  const [isLogin, setIsLogin] = useState(true);
   return (
     <>
       <Box border={"1px solid gray"} borderRadius={4} padding={5}>
         <VStack spacing={4}>
-          <Image src="./logo.png" h={24} cursor={"pointer"} />
+          <Image src="./logo.png" h={24} cursor={"pointer"} alt="Instagram" />
           <Input placeholder="Email" fontSize={14} type="email" />
           <Input placeholder="Password" fontSize={14} type="password" />
+          {!isLogin ? (
+            <Input
+              placeholder="Confirm Password"
+              fontSize={14}
+              type="password"
+            />
+          ) : null}
+          <Button w={"full"} colorScheme="blue" fontSize={14} size={"sm"}>
+            {" "}
+            {!isLogin ? "Login" : "Sign Up"}
+          </Button>
+          {/* OR TEXT */}
+          <Flex
+            alignItems={"center"}
+            justifyContent={"center"}
+            my={4}
+            gap={1}
+            w={"full"}
+          >
+            <Box flex={2} h={"1px"} bg={"gray.400"} />
+            <Text mk={1} color={"white"}>
+              OR
+            </Text>
+            <Box flex={2} h={"1px"} bg={"gray.400"} />
+          </Flex>
         </VStack>
       </Box>
     </>
