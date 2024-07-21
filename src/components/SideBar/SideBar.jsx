@@ -1,8 +1,39 @@
-import { Box, Flex, Link } from "@chakra-ui/react";
+import { Avatar, Box, Flex, Link } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
-import { InstagramLogo, InstagramMobileLogo } from "../../assets/constants";
+import {
+  CreatePostLogo,
+  InstagramLogo,
+  InstagramMobileLogo,
+  NotificationsLogo,
+  SearchLogo,
+} from "../../assets/constants";
 
 const SideBar = () => {
+  const sideBarItems = [
+    {
+      icon: <AiFillHome size={25} />,
+      text: "Home",
+      line: "/",
+    },
+    {
+      icon: <SearchLogo />,
+      text: "Search",
+      line: "/",
+    },
+    {
+      icon: <NotificationsLogo />,
+      text: "Notifications",
+    },
+    {
+      icon: <CreatePostLogo />,
+      text: "Create",
+    },
+    {
+      icon: <Avatar size={"sm"} name="Eren AVAR" src="/pic.jpg" />,
+      text: "Profile",
+      
+    },
+  ];
   return (
     <Box
       height={"100vh"}
